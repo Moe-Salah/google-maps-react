@@ -36,8 +36,8 @@ export class Marker extends React.Component {
 
   componentDidUpdate(prevProps) {
     if ((this.props.map !== prevProps.map) ||
-      (this.props.position !== prevProps.position) ||
-      (this.props.icon !== prevProps.icon)) {
+      (JSON.stringify(this.props.position) !== JSON.stringify(prevProps.position)) ||
+      (JSON.stringify(this.props.icon) !== JSON.stringify(prevProps.icon))) {
         if (this.marker) {
             this.marker.setMap(null);
         }
