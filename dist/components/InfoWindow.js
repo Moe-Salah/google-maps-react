@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['module', 'exports', 'Z:\\google-maps-react\\node_modules\\redbox-react\\lib\\index.js', 'Z:\\google-maps-react\\node_modules\\react-transform-catch-errors\\lib\\index.js', 'react', 'Z:\\google-maps-react\\node_modules\\react-transform-hmr\\lib\\index.js', 'prop-types', 'react-dom', 'react-dom/server'], factory);
+    define(['exports', 'react', 'prop-types', 'react-dom', 'react-dom/server'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(module, exports, require('Z:\\google-maps-react\\node_modules\\redbox-react\\lib\\index.js'), require('Z:\\google-maps-react\\node_modules\\react-transform-catch-errors\\lib\\index.js'), require('react'), require('Z:\\google-maps-react\\node_modules\\react-transform-hmr\\lib\\index.js'), require('prop-types'), require('react-dom'), require('react-dom/server'));
+    factory(exports, require('react'), require('prop-types'), require('react-dom'), require('react-dom/server'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod, mod.exports, global.index, global.index, global.react, global.index, global.propTypes, global.reactDom, global.server);
+    factory(mod.exports, global.react, global.propTypes, global.reactDom, global.server);
     global.InfoWindow = mod.exports;
   }
-})(this, function (module, exports, _index, _index3, _react2, _index5, _propTypes, _reactDom, _server) {
+})(this, function (exports, _react, _propTypes, _reactDom, _server) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -18,13 +18,7 @@
   });
   exports.InfoWindow = undefined;
 
-  var _index2 = _interopRequireDefault(_index);
-
-  var _index4 = _interopRequireDefault(_index3);
-
-  var _react3 = _interopRequireDefault(_react2);
-
-  var _index6 = _interopRequireDefault(_index5);
+  var _react2 = _interopRequireDefault(_react);
 
   var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -112,33 +106,7 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
-  var _components = {
-    InfoWindow: {
-      displayName: 'InfoWindow'
-    }
-  };
-
-  var _ZGoogleMapsReactNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
-    filename: 'src/components/InfoWindow.js',
-    components: _components,
-    locals: [module],
-    imports: [_react3.default]
-  });
-
-  var _ZGoogleMapsReactNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
-    filename: 'src/components/InfoWindow.js',
-    components: _components,
-    locals: [],
-    imports: [_react3.default, _index2.default]
-  });
-
-  function _wrapComponent(id) {
-    return function (Component) {
-      return _ZGoogleMapsReactNode_modulesReactTransformHmrLibIndexJs2(_ZGoogleMapsReactNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
-    };
-  }
-
-  var InfoWindow = _wrapComponent('InfoWindow')(function (_React$Component) {
+  var InfoWindow = exports.InfoWindow = function (_React$Component) {
     _inherits(InfoWindow, _React$Component);
 
     function InfoWindow() {
@@ -254,10 +222,7 @@
     }]);
 
     return InfoWindow;
-  }(_react3.default.Component));
-
-  exports.InfoWindow = InfoWindow;
-
+  }(_react2.default.Component);
 
   InfoWindow.propTypes = {
     children: _propTypes2.default.element.isRequired,

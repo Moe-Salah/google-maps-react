@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['module', 'exports', 'Z:\\google-maps-react\\node_modules\\redbox-react\\lib\\index.js', 'Z:\\google-maps-react\\node_modules\\react-transform-catch-errors\\lib\\index.js', 'react', 'Z:\\google-maps-react\\node_modules\\react-transform-hmr\\lib\\index.js', 'react-dom', './lib/ScriptCache', './lib/GoogleApi'], factory);
+    define(['exports', 'react', 'react-dom', './lib/ScriptCache', './lib/GoogleApi'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(module, exports, require('Z:\\google-maps-react\\node_modules\\redbox-react\\lib\\index.js'), require('Z:\\google-maps-react\\node_modules\\react-transform-catch-errors\\lib\\index.js'), require('react'), require('Z:\\google-maps-react\\node_modules\\react-transform-hmr\\lib\\index.js'), require('react-dom'), require('./lib/ScriptCache'), require('./lib/GoogleApi'));
+    factory(exports, require('react'), require('react-dom'), require('./lib/ScriptCache'), require('./lib/GoogleApi'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod, mod.exports, global.index, global.index, global.react, global.index, global.reactDom, global.ScriptCache, global.GoogleApi);
+    factory(mod.exports, global.react, global.reactDom, global.ScriptCache, global.GoogleApi);
     global.GoogleApiComponent = mod.exports;
   }
-})(this, function (module, exports, _index, _index3, _react2, _index5, _reactDom, _ScriptCache, _GoogleApi) {
+})(this, function (exports, _react, _reactDom, _ScriptCache, _GoogleApi) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -18,13 +18,7 @@
   });
   exports.wrapper = undefined;
 
-  var _index2 = _interopRequireDefault(_index);
-
-  var _index4 = _interopRequireDefault(_index3);
-
-  var _react3 = _interopRequireDefault(_react2);
-
-  var _index6 = _interopRequireDefault(_index5);
+  var _react2 = _interopRequireDefault(_react);
 
   var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -84,33 +78,6 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
-  var _components = {
-    Wrapper: {
-      displayName: 'Wrapper',
-      isInFunction: true
-    }
-  };
-
-  var _ZGoogleMapsReactNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
-    filename: 'src/GoogleApiComponent.js',
-    components: _components,
-    locals: [module],
-    imports: [_react3.default]
-  });
-
-  var _ZGoogleMapsReactNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
-    filename: 'src/GoogleApiComponent.js',
-    components: _components,
-    locals: [],
-    imports: [_react3.default, _index2.default]
-  });
-
-  function _wrapComponent(id) {
-    return function (Component) {
-      return _ZGoogleMapsReactNode_modulesReactTransformHmrLibIndexJs2(_ZGoogleMapsReactNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
-    };
-  }
-
   var defaultMapConfig = {};
 
   var serialize = function serialize(obj) {
@@ -144,7 +111,7 @@
   };
 
   var DefaultLoadingContainer = function DefaultLoadingContainer(props) {
-    return _react3.default.createElement(
+    return _react2.default.createElement(
       'div',
       null,
       'Loading...'
@@ -153,7 +120,7 @@
 
   var wrapper = exports.wrapper = function wrapper(input, className, style) {
     return function (WrappedComponent) {
-      var Wrapper = _wrapComponent('Wrapper')(function (_React$Component) {
+      var Wrapper = function (_React$Component) {
         _inherits(Wrapper, _React$Component);
 
         function Wrapper(props, context) {
@@ -174,7 +141,7 @@
             options: options
           };
 
-          _this.mapRef = _react3.default.createRef();
+          _this.mapRef = _react2.default.createRef();
           return _this;
         }
 
@@ -245,7 +212,7 @@
             var LoadingContainer = this.LoadingContainer;
 
             if (!this.state.loaded) {
-              return _react3.default.createElement(LoadingContainer, null);
+              return _react2.default.createElement(LoadingContainer, null);
             }
 
             var props = Object.assign({}, this.props, {
@@ -253,17 +220,17 @@
               google: window.google
             });
 
-            return _react3.default.createElement(
+            return _react2.default.createElement(
               'div',
               { className: className, style: style },
-              _react3.default.createElement(WrappedComponent, props),
-              _react3.default.createElement('div', { ref: this.mapRef })
+              _react2.default.createElement(WrappedComponent, props),
+              _react2.default.createElement('div', { ref: this.mapRef })
             );
           }
         }]);
 
         return Wrapper;
-      }(_react3.default.Component));
+      }(_react2.default.Component);
 
       return Wrapper;
     };
