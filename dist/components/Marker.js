@@ -1,24 +1,30 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', 'react', 'prop-types', '../lib/String'], factory);
+    define(["module", "exports", "Z:\\google-maps-react\\node_modules\\redbox-react\\lib\\index.js", "Z:\\google-maps-react\\node_modules\\react-transform-catch-errors\\lib\\index.js", "react", "Z:\\google-maps-react\\node_modules\\react-transform-hmr\\lib\\index.js", "prop-types", "../lib/String"], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('react'), require('prop-types'), require('../lib/String'));
+    factory(module, exports, require("Z:\\google-maps-react\\node_modules\\redbox-react\\lib\\index.js"), require("Z:\\google-maps-react\\node_modules\\react-transform-catch-errors\\lib\\index.js"), require("react"), require("Z:\\google-maps-react\\node_modules\\react-transform-hmr\\lib\\index.js"), require("prop-types"), require("../lib/String"));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.react, global.propTypes, global.String);
+    factory(mod, mod.exports, global.index, global.index, global.react, global.index, global.propTypes, global.String);
     global.Marker = mod.exports;
   }
-})(this, function (exports, _react, _propTypes, _String) {
-  'use strict';
+})(this, function (module, exports, _index, _index3, _react2, _index5, _propTypes, _String) {
+  "use strict";
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
   exports.Marker = undefined;
 
-  var _react2 = _interopRequireDefault(_react);
+  var _index2 = _interopRequireDefault(_index);
+
+  var _index4 = _interopRequireDefault(_index3);
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index6 = _interopRequireDefault(_index5);
 
   var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -102,7 +108,33 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
-  var evtNames = ['click', 'dblclick', 'dragend', 'mousedown', 'mouseout', 'mouseover', 'mouseup', 'recenter'];
+  var _components = {
+    Marker: {
+      displayName: "Marker"
+    }
+  };
+
+  var _ZGoogleMapsReactNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
+    filename: "src/components/Marker.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  var _ZGoogleMapsReactNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
+    filename: "src/components/Marker.js",
+    components: _components,
+    locals: [],
+    imports: [_react3.default, _index2.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _ZGoogleMapsReactNode_modulesReactTransformHmrLibIndexJs2(_ZGoogleMapsReactNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
+    };
+  }
+
+  var evtNames = ["click", "dblclick", "dragend", "mousedown", "mouseout", "mouseover", "mouseup", "recenter"];
 
   var wrappedPromise = function wrappedPromise() {
     var wrappedPromise = {},
@@ -117,7 +149,7 @@
     return wrappedPromise;
   };
 
-  var Marker = exports.Marker = function (_React$Component) {
+  var Marker = _wrapComponent("Marker")(function (_React$Component) {
     _inherits(Marker, _React$Component);
 
     function Marker() {
@@ -127,13 +159,13 @@
     }
 
     _createClass(Marker, [{
-      key: 'componentDidMount',
+      key: "componentDidMount",
       value: function componentDidMount() {
         this.markerPromise = wrappedPromise();
         this.renderMarker();
       }
     }, {
-      key: 'componentDidUpdate',
+      key: "componentDidUpdate",
       value: function componentDidUpdate(prevProps) {
         if (this.props.map !== prevProps.map || JSON.stringify(this.props.position) !== JSON.stringify(prevProps.position) || JSON.stringify(this.props.icon) !== JSON.stringify(prevProps.icon)) {
           if (this.marker) {
@@ -143,14 +175,14 @@
         }
       }
     }, {
-      key: 'componentWillUnmount',
+      key: "componentWillUnmount",
       value: function componentWillUnmount() {
         if (this.marker) {
           this.marker.setMap(null);
         }
       }
     }, {
-      key: 'renderMarker',
+      key: "renderMarker",
       value: function renderMarker() {
         var _this2 = this;
 
@@ -162,8 +194,9 @@
             icon = _props.icon,
             label = _props.label,
             draggable = _props.draggable,
+            zIndex = _props.zIndex,
             title = _props.title,
-            props = _objectWithoutProperties(_props, ['map', 'google', 'position', 'mapCenter', 'icon', 'label', 'draggable', 'title']);
+            props = _objectWithoutProperties(_props, ["map", "google", "position", "mapCenter", "icon", "label", "draggable", "zIndex", "title"]);
 
         if (!google) {
           return null;
@@ -180,6 +213,7 @@
           icon: icon,
           label: label,
           title: title,
+          zIndex: zIndex,
           draggable: draggable
         }, props);
         this.marker = new google.maps.Marker(pref);
@@ -191,31 +225,34 @@
         this.markerPromise.resolve(this.marker);
       }
     }, {
-      key: 'getMarker',
+      key: "getMarker",
       value: function getMarker() {
         return this.markerPromise;
       }
     }, {
-      key: 'handleEvent',
+      key: "handleEvent",
       value: function handleEvent(evt) {
         var _this3 = this;
 
         return function (e) {
-          var evtName = 'on' + (0, _String.camelize)(evt);
+          var evtName = "on" + (0, _String.camelize)(evt);
           if (_this3.props[evtName]) {
             _this3.props[evtName](_this3.props, _this3.marker, e);
           }
         };
       }
     }, {
-      key: 'render',
+      key: "render",
       value: function render() {
         return null;
       }
     }]);
 
     return Marker;
-  }(_react2.default.Component);
+  }(_react3.default.Component));
+
+  exports.Marker = Marker;
+
 
   Marker.propTypes = {
     position: _propTypes2.default.object,
@@ -227,7 +264,7 @@
   });
 
   Marker.defaultProps = {
-    name: 'Marker'
+    name: "Marker"
   };
 
   exports.default = Marker;

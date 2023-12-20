@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', 'react', 'prop-types', '../lib/areBoundsEqual', '../lib/String'], factory);
+    define(['module', 'exports', 'Z:\\google-maps-react\\node_modules\\redbox-react\\lib\\index.js', 'Z:\\google-maps-react\\node_modules\\react-transform-catch-errors\\lib\\index.js', 'react', 'Z:\\google-maps-react\\node_modules\\react-transform-hmr\\lib\\index.js', 'prop-types', '../lib/areBoundsEqual', '../lib/String'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('react'), require('prop-types'), require('../lib/areBoundsEqual'), require('../lib/String'));
+    factory(module, exports, require('Z:\\google-maps-react\\node_modules\\redbox-react\\lib\\index.js'), require('Z:\\google-maps-react\\node_modules\\react-transform-catch-errors\\lib\\index.js'), require('react'), require('Z:\\google-maps-react\\node_modules\\react-transform-hmr\\lib\\index.js'), require('prop-types'), require('../lib/areBoundsEqual'), require('../lib/String'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.react, global.propTypes, global.areBoundsEqual, global.String);
+    factory(mod, mod.exports, global.index, global.index, global.react, global.index, global.propTypes, global.areBoundsEqual, global.String);
     global.Rectangle = mod.exports;
   }
-})(this, function (exports, _react, _propTypes, _areBoundsEqual, _String) {
+})(this, function (module, exports, _index, _index3, _react2, _index5, _propTypes, _areBoundsEqual, _String) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -18,7 +18,13 @@
   });
   exports.Rectangle = undefined;
 
-  var _react2 = _interopRequireDefault(_react);
+  var _index2 = _interopRequireDefault(_index);
+
+  var _index4 = _interopRequireDefault(_index3);
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index6 = _interopRequireDefault(_index5);
 
   var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -102,6 +108,32 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
+  var _components = {
+    Rectangle: {
+      displayName: 'Rectangle'
+    }
+  };
+
+  var _ZGoogleMapsReactNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
+    filename: 'src/components/Rectangle.js',
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  var _ZGoogleMapsReactNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
+    filename: 'src/components/Rectangle.js',
+    components: _components,
+    locals: [],
+    imports: [_react3.default, _index2.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _ZGoogleMapsReactNode_modulesReactTransformHmrLibIndexJs2(_ZGoogleMapsReactNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
+    };
+  }
+
   var evtNames = ['click', 'mouseout', 'mouseover'];
 
   var wrappedPromise = function wrappedPromise() {
@@ -117,7 +149,7 @@
     return wrappedPromise;
   };
 
-  var Rectangle = exports.Rectangle = function (_React$Component) {
+  var Rectangle = _wrapComponent('Rectangle')(function (_React$Component) {
     _inherits(Rectangle, _React$Component);
 
     function Rectangle() {
@@ -213,7 +245,10 @@
     }]);
 
     return Rectangle;
-  }(_react2.default.Component);
+  }(_react3.default.Component));
+
+  exports.Rectangle = Rectangle;
+
 
   Rectangle.propTypes = {
     bounds: _propTypes2.default.object,

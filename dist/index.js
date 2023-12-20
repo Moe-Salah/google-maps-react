@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './GoogleApiComponent', './components/Marker', './components/InfoWindow', './components/HeatMap', './components/Polygon', './components/Polyline', './components/Circle', './components/Rectangle', 'react', 'prop-types', 'react-dom', './lib/String', './lib/cancelablePromise'], factory);
+    define(['module', 'exports', './GoogleApiComponent', './components/Marker', './components/InfoWindow', './components/HeatMap', './components/Polygon', './components/Polyline', './components/Circle', './components/Rectangle', 'Z:\\google-maps-react\\node_modules\\redbox-react\\lib\\index.js', 'Z:\\google-maps-react\\node_modules\\react-transform-catch-errors\\lib\\index.js', 'react', 'Z:\\google-maps-react\\node_modules\\react-transform-hmr\\lib\\index.js', 'prop-types', 'react-dom', './lib/String', './lib/cancelablePromise'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./GoogleApiComponent'), require('./components/Marker'), require('./components/InfoWindow'), require('./components/HeatMap'), require('./components/Polygon'), require('./components/Polyline'), require('./components/Circle'), require('./components/Rectangle'), require('react'), require('prop-types'), require('react-dom'), require('./lib/String'), require('./lib/cancelablePromise'));
+    factory(module, exports, require('./GoogleApiComponent'), require('./components/Marker'), require('./components/InfoWindow'), require('./components/HeatMap'), require('./components/Polygon'), require('./components/Polyline'), require('./components/Circle'), require('./components/Rectangle'), require('Z:\\google-maps-react\\node_modules\\redbox-react\\lib\\index.js'), require('Z:\\google-maps-react\\node_modules\\react-transform-catch-errors\\lib\\index.js'), require('react'), require('Z:\\google-maps-react\\node_modules\\react-transform-hmr\\lib\\index.js'), require('prop-types'), require('react-dom'), require('./lib/String'), require('./lib/cancelablePromise'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.GoogleApiComponent, global.Marker, global.InfoWindow, global.HeatMap, global.Polygon, global.Polyline, global.Circle, global.Rectangle, global.react, global.propTypes, global.reactDom, global.String, global.cancelablePromise);
+    factory(mod, mod.exports, global.GoogleApiComponent, global.Marker, global.InfoWindow, global.HeatMap, global.Polygon, global.Polyline, global.Circle, global.Rectangle, global.index, global.index, global.react, global.index, global.propTypes, global.reactDom, global.String, global.cancelablePromise);
     global.index = mod.exports;
   }
-})(this, function (exports, _GoogleApiComponent, _Marker, _InfoWindow, _HeatMap, _Polygon, _Polyline, _Circle, _Rectangle, _react, _propTypes, _reactDom, _String, _cancelablePromise) {
+})(this, function (module, exports, _GoogleApiComponent, _Marker, _InfoWindow, _HeatMap, _Polygon, _Polyline, _Circle, _Rectangle, _index, _index3, _react2, _index5, _propTypes, _reactDom, _String, _cancelablePromise) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -66,7 +66,13 @@
     }
   });
 
-  var _react2 = _interopRequireDefault(_react);
+  var _index2 = _interopRequireDefault(_index);
+
+  var _index4 = _interopRequireDefault(_index3);
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index6 = _interopRequireDefault(_index5);
 
   var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -126,6 +132,32 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
+  var _components = {
+    Map: {
+      displayName: 'Map'
+    }
+  };
+
+  var _ZGoogleMapsReactNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
+    filename: 'src/index.js',
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  var _ZGoogleMapsReactNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
+    filename: 'src/index.js',
+    components: _components,
+    locals: [],
+    imports: [_react3.default, _index2.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _ZGoogleMapsReactNode_modulesReactTransformHmrLibIndexJs2(_ZGoogleMapsReactNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
+    };
+  }
+
   var mapStyles = {
     container: {
       position: 'absolute',
@@ -143,7 +175,7 @@
 
   var evtNames = ['ready', 'click', 'dragend', 'recenter', 'bounds_changed', 'center_changed', 'dblclick', 'dragstart', 'heading_change', 'idle', 'maptypeid_changed', 'mousemove', 'mouseout', 'mouseover', 'projection_changed', 'resize', 'rightclick', 'tilesloaded', 'tilt_changed', 'zoom_changed'];
 
-  var Map = exports.Map = function (_React$Component) {
+  var Map = exports.Map = _wrapComponent('Map')(function (_React$Component) {
     _inherits(Map, _React$Component);
 
     function Map(props) {
@@ -163,7 +195,7 @@
         }
       };
 
-      _this.mapRef = _react2.default.createRef();
+      _this.mapRef = _react3.default.createRef();
       return _this;
     }
 
@@ -353,9 +385,9 @@
 
         if (!children) return;
 
-        return _react2.default.Children.map(children, function (c) {
+        return _react3.default.Children.map(children, function (c) {
           if (!c) return;
-          return _react2.default.cloneElement(c, {
+          return _react3.default.cloneElement(c, {
             map: _this6.map,
             google: _this6.props.google,
             mapCenter: _this6.state.currentLocation
@@ -371,10 +403,10 @@
 
         var containerStyles = Object.assign({}, mapStyles.container, this.props.containerStyle);
 
-        return _react2.default.createElement(
+        return _react3.default.createElement(
           'div',
           { style: containerStyles, className: this.props.className },
-          _react2.default.createElement(
+          _react3.default.createElement(
             'div',
             { style: style, ref: this.mapRef },
             'Loading map...'
@@ -385,7 +417,7 @@
     }]);
 
     return Map;
-  }(_react2.default.Component);
+  }(_react3.default.Component));
 
   Map.propTypes = {
     google: _propTypes2.default.object,
