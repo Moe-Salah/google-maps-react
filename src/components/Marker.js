@@ -1,47 +1,49 @@
-import React, {Fragment} from 'react'
-import PropTypes from 'prop-types'
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
-import { camelize } from '../lib/String'
+import { camelize } from "../lib/String";
 
 const evtNames = [
-  'click',
-  'dblclick',
-  'dragend',
-  'mousedown',
-  'mouseout',
-  'mouseover',
-  'mouseup',
-  'recenter',
+  "click",
+  "dblclick",
+  "dragend",
+  "mousedown",
+  "mouseout",
+  "mouseover",
+  "mouseup",
+  "recenter"
 ];
 
-const wrappedPromise = function() {
-    var wrappedPromise = {},
-        promise = new Promise(function (resolve, reject) {
-            wrappedPromise.resolve = resolve;
-            wrappedPromise.reject = reject;
-        });
-    wrappedPromise.then = promise.then.bind(promise);
-    wrappedPromise.catch = promise.catch.bind(promise);
-    wrappedPromise.promise = promise;
+const wrappedPromise = function () {
+  var wrappedPromise = {},
+    promise = new Promise(function (resolve, reject) {
+      wrappedPromise.resolve = resolve;
+      wrappedPromise.reject = reject;
+    });
+  wrappedPromise.then = promise.then.bind(promise);
+  wrappedPromise.catch = promise.catch.bind(promise);
+  wrappedPromise.promise = promise;
 
-    return wrappedPromise;
-}
+  return wrappedPromise;
+};
 
 export class Marker extends React.Component {
-
   componentDidMount() {
     this.markerPromise = wrappedPromise();
     this.renderMarker();
   }
 
   componentDidUpdate(prevProps) {
-    if ((this.props.map !== prevProps.map) ||
-      (JSON.stringify(this.props.position) !== JSON.stringify(prevProps.position)) ||
-      (JSON.stringify(this.props.icon) !== JSON.stringify(prevProps.icon))) {
-        if (this.marker) {
-            this.marker.setMap(null);
-        }
-        this.renderMarker();
+    if (
+      this.props.map !== prevProps.map ||
+      JSON.stringify(this.props.position) !==
+        JSON.stringify(prevProps.position) ||
+      JSON.stringify(this.props.icon) !== JSON.stringify(prevProps.icon)
+    ) {
+      if (this.marker) {
+        this.marker.setMap(null);
+      }
+      this.renderMarker();
     }
   }
 
@@ -60,11 +62,12 @@ export class Marker extends React.Component {
       icon,
       label,
       draggable,
+      zIndex,
       title,
       ...props
     } = this.props;
     if (!google) {
-      return null
+      return null;
     }
 
     let pos = position || mapCenter;
@@ -78,6 +81,7 @@ export class Marker extends React.Component {
       icon,
       label,
       title,
+      zIndex,
       draggable,
       ...props
     };
@@ -95,12 +99,12 @@ export class Marker extends React.Component {
   }
 
   handleEvent(evt) {
-    return (e) => {
-      const evtName = `on${camelize(evt)}`
+    return e => {
+      const evtName = `on${camelize(evt)}`;
       if (this.props[evtName]) {
         this.props[evtName](this.props, this.marker, e);
       }
-    }
+    };
   }
 
   render() {
@@ -111,12 +115,12 @@ export class Marker extends React.Component {
 Marker.propTypes = {
   position: PropTypes.object,
   map: PropTypes.object
-}
+};
 
-evtNames.forEach(e => Marker.propTypes[e] = PropTypes.func)
+evtNames.forEach(e => (Marker.propTypes[e] = PropTypes.func));
 
 Marker.defaultProps = {
-  name: 'Marker'
-}
+  name: "Marker"
+};
 
-export default Marker
+export default Marker;
